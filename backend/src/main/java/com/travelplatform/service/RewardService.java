@@ -39,7 +39,7 @@ public class RewardService {
 
     // ─── Config ─────────────────────────────────────────────
 
-    @Transactional(readOnly = true)
+    @Transactional
     public RewardConfig getConfig() {
         return configRepo.findFirstByOrderByIdAsc()
                 .orElseGet(() -> configRepo.save(new RewardConfig()));
@@ -72,7 +72,7 @@ public class RewardService {
                 });
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public RewardAccount getAccount(Long userId) {
         return getOrCreateAccount(userId);
     }
